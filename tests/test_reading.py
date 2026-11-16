@@ -68,3 +68,20 @@ def test_pdf_and_word_read_the_same(world):
     assert a == b
     assert not any("Confidential" in t or t.startswith("Page ") for t in a)
     assert sum(1 for x in read(pdf(spec)) if x.kind == "row") == sum(1 for x in read(word(spec)) if x.kind == "row")
+
+
+def test_shapes_found_after_the_held_out_run():
+    p = parse("The mass of the pump shall be limited to 12 kg", "en")
+    assert (p.kind, p.hi, p.unit) == ("max", 12, "kg") and "mass" in p.label and "pump" not in p.label
+    p = parse("The cycle time of the controller must not exceed 50 ms", "en")
+    assert (p.kind, p.hi) == ("max", 0.05) and {"cycle", "time"} <= set(p.label)
+    p = parse("The charger shall accept an input voltage of 230 V +/- 10 %", "en")
+    assert (p.kind, p.lo, p.hi) == ("range", 207, 253)
+    p = parse("The fan shall operate at a speed of 3000 rpm ± 150 rpm", "en")
+    assert (p.kind, p.lo, p.hi) == ("range", 2850, 3150)
+    p = parse("The inverter shall achieve a power factor of at least 0.95", "en", frozenset({"factor"}))
+    assert (p.kind, p.lo, p.dim) == ("min", 0.95, "dimensionless")
+    p = parse("The housing shall transmit a vibration velocity of at most 7.1 mm/s", "en")
+    assert (p.unit, p.dim) == ("mm/s", "velocity")
+    assert split("The unit shall deliver at least 5 kW, and the mass of the unit shall be limited to 9 kg.") == [
+        "The unit shall deliver at least 5 kW", "The mass of the unit shall be limited to 9 kg"]

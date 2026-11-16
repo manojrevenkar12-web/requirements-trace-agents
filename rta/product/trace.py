@@ -35,7 +35,7 @@ class Baseline:
         self.items: dict[str, Item] = {}
         for k, v in reqs.items():
             text = v.get(a["text"], "")
-            p = parse(text, loc)
+            p = parse(text, loc, frozenset(cfg["dimensionless"]))
             tests = rif.sources(a["verifies"], k)
             self.items[k] = Item(k, v.get(a["subsystem"], ""), text, p, tests, label_of(p, self.subsystems))
 

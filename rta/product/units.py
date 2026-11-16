@@ -32,6 +32,9 @@ UNITS: dict[str, tuple[str, str, float, float]] = {
     "arcmin": ("angle", "arcmin", 1, 0), "arcsec": ("angle", "arcmin", 1 / 60, 0),
     "years": ("duration", "years", 1, 0), "a": ("duration", "years", 1, 0),
     "cycles": ("count", "cycles", 1, 0),
+    "mm/s": ("velocity", "mm/s", 1, 0), "m/s": ("velocity", "mm/s", 1e3, 0), "km/h": ("vehicle speed", "km/h", 1, 0),
+    "g/a": ("leak rate", "g/a", 1, 0), "g/year": ("leak rate", "g/a", 1, 0), "g/yr": ("leak rate", "g/a", 1, 0),
+    "kg/h": ("mass flow", "kg/h", 1, 0), "kg/s": ("mass flow", "kg/h", 3600, 0), "g/s": ("mass flow", "kg/h", 3.6, 0),
 }
 _UNIT_RE = "|".join(re.escape(u) for u in sorted(UNITS, key=len, reverse=True))
 NUM = r"[-−+]?\d{1,3}(?:[.,\u202f ]\d{3})+(?:[.,]\d+)?(?!\d)|[-−+]?\d+(?:[.,]\d+)?"

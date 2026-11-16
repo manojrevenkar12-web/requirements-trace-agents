@@ -4,10 +4,14 @@ from __future__ import annotations
 
 import re
 
-ADDRESS = re.compile(r"\b(ai|a\.i\.|assistant|chatbot|language model|llm|gpt|automated (?:tool|system|reader)s?|"
-                     r"bot|copilot|agent)s?\b", re.I)
-COMMAND = re.compile(r"\b(ignore|disregard|forget|override)\b.{0,40}\b(instruction|prompt|rule|previous|above)s?\b|"
-                     r"\b(mark|report|classify|rate|treat)\b.{0,60}\b(compliant|approved|fulfilled|accepted|ok)\b|"
+READER = r"(?:ai|a\.i\.|assistants?|chat ?bots?|bots?|language[- ]models?|llms?|gpts?|copilots?|agents?|" \
+         r"(?:automated|automatic|machine|ai)[- ](?:\w+ )?(?:tools?|systems?|readers?|reviewers?|assistants?|agents?|parsers?)|" \
+         r"(?:tools?|systems?|readers?|software) (?:reading|processing|parsing))"
+ADDRESS = re.compile(rf"\b{READER}\b", re.I)
+COMMAND = re.compile(r"\b(ignore|disregard|forget|override|bypass|skip)\b.{0,50}\b(instructions?|prompts?|rules?|"
+                     r"guidance|previous|earlier|above|checks?|assessments?|reviews?|evaluation)\b|"
+                     r"\b(mark|report|classify|rate|treat|declare|confirm|consider)\b.{0,60}\b(compliant|conform\w*|"
+                     r"approved|pre-approved|fulfilled|accepted|ok)\b|"
                      r"\bdo not (?:raise|report|flag|mention)\b|\bsystem prompt\b|\byou are now\b", re.I)
 
 

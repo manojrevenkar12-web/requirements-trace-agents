@@ -53,7 +53,11 @@ def is_candidate(text: str) -> bool:
 def split(text: str) -> list[str]:
     """'The X shall A and shall B.' -> ['The X shall A', 'The X shall B']. A range ('between 1 and 2') is not split."""
     t = text.rstrip(". ")
+    own = re.match(r"^(?P<a>.+?\b(?:shall|must)\b.+?),?\s+and\s+(?P<b>(?:the|a|an)\s[^,]+?\b(?:shall|must)\b.+)$", t, re.I)
     m = re.match(r"^(?P<head>.*?\b(?:shall|must)\b)(?P<a>.+?)\s+and\s+(?P<modal>shall|must)\b(?P<b>.+)$", t, re.I)
+    if own and (not m or own.end("a") < m.end("a")):     # "..., and the mass of the unit shall be ..." has its own subject
+        b = own.group("b")
+        return [own.group("a").strip()] + split(b[0].upper() + b[1:])
     if not m:
         return [t]
     subj = re.split(r"\b(?:shall|must)\b", m.group("head"), maxsplit=1, flags=re.I)[0].strip()
@@ -62,7 +66,11 @@ def split(text: str) -> list[str]:
     return [first] + split(second)
 
 
-def parse(text: str, locale: str) -> Parsed:
+TOL = re.compile(r"^\s*(?:±|\+/-|\+-|plus or minus)\s*$", re.I)
+QTY_SUBJECT = re.compile(r"^(?:the|a|an)\s+(?P<label>.+?)\s+of\s+the\s+(?P<subj>.+)$", re.I)
+
+
+def parse(text: str, locale: str, dimensionless: frozenset = frozenset()) -> Parsed:
     t = text.rstrip(". ")
     p = Parsed(text=t)
     body = t
@@ -101,6 +109,14 @@ def parse(text: str, locale: str) -> Parsed:
     chosen = None
     for i, (m, kind, window) in enumerate(gov):
         nxt = gov[i + 1] if i + 1 < len(gov) else None
+        if nxt and TOL.match(nxt[2]) and chosen is None:        # "400 V ± 40 V", "400 V +/- 10 %"
+            unit = m.unit
+            half = m.value * nxt[0].value / 100 if nxt[0].unit == "%" and unit != "%" else nxt[0].value
+            lo, cu, dim = canonical(m.value - half, unit)
+            hi, _, _ = canonical(m.value + half, unit)
+            p.kind, p.lo, p.hi, p.unit, p.dim, p.unit_written = "range", lo, hi, cu, dim, unit
+            chosen = (m.start, nxt[0].end)
+            break
         if nxt and RANGE_SEP.match(nxt[2]) and (re.search(r"\b(between|from|range of)\s*$", window, re.I)
                                                  or nxt[2].strip() in ("...", "…")) and (m.unit or nxt[0].unit):
             unit = m.unit or nxt[0].unit
@@ -134,11 +150,19 @@ def parse(text: str, locale: str) -> Parsed:
     # the subject is who must do it, not what is measured: "The ECU software shall have a start-up time"
     passive = re.search(r"\b(?:shall|must) be \w+.*?\bby the (.+)$", body, re.I)
     subject_text = passive.group(1) if passive else MODAL.split(body, maxsplit=1)[0]
-    subject_words = set(re.findall(r"[a-zA-Z][a-zA-Z-]+", subject_text.lower())) if MODAL.search(body) else set()
     if not passive:
-        label_text = MODAL.split(label_text, maxsplit=1)[-1]
+        rest = MODAL.split(label_text, maxsplit=1)[-1]
+        qs = QTY_SUBJECT.match(subject_text.strip())
+        # "The mass of the compressor shall be limited to 27 kg": the quantity is the subject, not the subsystem
+        if qs and MODAL.search(body):
+            subject_text = qs.group("subj")
+            rest = qs.group("label") + " " + rest
+        label_text = rest
+    subject_words = set(re.findall(r"[a-zA-Z][a-zA-Z-]+", subject_text.lower())) if MODAL.search(body) else set()
     p.label = tuple(w for w in re.findall(r"[a-zA-Z][a-zA-Z-]+", label_text.lower())
                     if w not in STOP and w not in subject_words)
+    if p.kind in ("min", "max", "eq") and p.unit_written is None and set(p.label) & dimensionless:
+        p.dim = "dimensionless"           # "a COP of at least 4.6", "a power factor of at least 0.95"
     return p
 
 
@@ -150,8 +174,15 @@ def row_clause(cells: list[str], header: list[str] | None) -> tuple[str | None, 
         for name, c in zip(h, cells):
             get[name] = c
     else:
-        names = ["id", "subsystem", "parameter", "requirement", "unit"][-len(cells):]
-        get = dict(zip(names, cells))
+        # an empty cell (a unitless value, a row without ID) shifts the columns: anchor on the value cell instead
+        rest = list(cells)
+        if rest and re.match(r"^[A-Z][A-Z0-9]*-[A-Z0-9-]*\d$", rest[0]):
+            get["id"] = rest.pop(0)
+        at = max((i for i, c in enumerate(rest) if re.search(r"\d", c) and not re.search(r"[a-z]{4,}", c)), default=len(rest) - 1)
+        get["requirement"] = rest[at] if rest else ""
+        get["unit"] = rest[at + 1] if at + 1 < len(rest) else ""
+        get["parameter"] = rest[at - 1] if at >= 1 else ""
+        get["subsystem"] = rest[at - 2] if at >= 2 else ""
     rid = get.get("id") or None
     sub = get.get("subsystem") or get.get("component")
     param = get.get("parameter", "")
@@ -167,5 +198,6 @@ def row_clause(cells: list[str], header: list[str] | None) -> tuple[str | None, 
         lead = cm.group("c")[0].upper() + cm.group("c")[1:] + ", "
         param = (param[:cm.start()] + param[cm.end():]).strip()
         subject = subject[0].lower() + subject[1:]
-    clause = f"{lead}{subject} shall have a {param[0].lower() + param[1:] if param else 'value'} {req} {unit}"
+    name = (param[0].lower() + param[1:] if param[1:2].islower() else param) if param else "value"
+    clause = f"{lead}{subject} shall have a {name} {req} {unit}"
     return rid, re.sub(r"\s+", " ", clause).strip(), sub

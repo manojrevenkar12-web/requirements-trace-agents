@@ -1,0 +1,10 @@
+.legend { display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); list-style: none; padding: 0; margin: 0 0 var(--space-8); font-size: var(--text-sm); }
+.legend li { display: flex; align-items: center; gap: var(--space-2); }
+.swatch { width: var(--space-4); height: var(--space-4); border-radius: var(--radius-sm); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: var(--space-8) var(--space-12); }
+.measure { margin: 0; }
+.measure figcaption { display: grid; margin-bottom: var(--space-3); }
+.measure figcaption span { color: var(--ink-soft); font-size: var(--text-sm); }
+.bar { display: grid; grid-template-columns: 8.5rem 1fr 6.5rem; align-items: center; gap: var(--space-3); margin: var(--space-2) 0; font-size: var(--text-sm); }
+.name { color: var(--ink-soft); }
+.value { text-align: right; font-weight: 600; }

@@ -1,0 +1,5 @@
+.page { max-width: var(--page); margin: 0 auto; padding: var(--space-8) var(--space-6) var(--space-16); }
+.header { padding-bottom: var(--space-4); }
+.header h1 { font-size: var(--text-lg); margin: 0; font-weight: 750; }
+.header p { margin: 0; color: var(--ink-soft); max-width: var(--measure); }
+.footer { border-top: 1px solid var(--rule); padding-top: var(--space-6); color: var(--ink-soft); font-size: var(--text-sm); max-width: var(--measure); }

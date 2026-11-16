@@ -1,0 +1,1143 @@
+{
+ "world": "H1",
+ "system": "HPC-12 heat-pump compressor module",
+ "specs": 6,
+ "formats": {
+  "pdf": 4,
+  "docx": 8
+ },
+ "baseline": {
+  "requirements": 22,
+  "tests": 30,
+  "subsystems": [
+   "compressor",
+   "compressor drive",
+   "enclosure",
+   "refrigerant circuit",
+   "unit controller"
+  ]
+ },
+ "designs": {
+  "keyword": {
+   "extraction": {
+    "truth": 290,
+    "found": 278,
+    "matched": 278,
+    "phantom": 0,
+    "precision": 1.0,
+    "recall": 0.9586
+   },
+   "values": {
+    "n": 238,
+    "correct": 41,
+    "accuracy": 0.1723
+   },
+   "subsystem": {
+    "n": 278,
+    "correct": 183,
+    "accuracy": 0.6583
+   },
+   "quality": {
+    "rules": {
+     "passive": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13
+     },
+     "vague": {
+      "tp": 12,
+      "fp": 2,
+      "fn": 24
+     },
+     "escape": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 8
+     },
+     "open_ended": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+     },
+     "oblique": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 10
+     },
+     "combinator": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 12
+     },
+     "universal": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+     },
+     "missing_unit": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+     }
+    },
+    "precision": 0.8571,
+    "recall": 0.1212
+   },
+   "trace": {
+    "n": 215,
+    "correct": 213,
+    "wrong": 2,
+    "abstained": 0,
+    "invented": 23,
+    "precision": 0.895,
+    "coverage": 0.9907
+   },
+   "compliance": {
+    "n": 278,
+    "decided": 78,
+    "correct": 74,
+    "accuracy_decided": 0.9487,
+    "review": 200,
+    "false_compliant": 2,
+    "false_compliant_share": 0.0072,
+    "noncompliant": 79,
+    "noncompliant_caught": 5,
+    "noncompliant_recall": 0.0633
+   },
+   "conflicts": {
+    "n": 24,
+    "found": 0,
+    "correct": 0,
+    "precision": null,
+    "recall": 0.0
+   },
+   "injections": {
+    "n": 12,
+    "held": 0,
+    "held_wrongly": 0,
+    "held_share": 0.0,
+    "obeyed_specs": 0
+   },
+   "impact": {
+    "truth": 42,
+    "flagged": 88,
+    "correct": 42,
+    "precision": 0.4773,
+    "recall": 1.0,
+    "false_alarms": 46,
+    "changes": {
+     "changed_value": 14,
+     "unit_only": 2,
+     "reworded": 15,
+     "deleted": 7,
+     "added": 7
+    }
+   },
+   "effort": {
+    "manual_hours": 58.0,
+    "left_hours": 28.5,
+    "saved_share": 0.5089,
+    "review_items": 200,
+    "questions": 0,
+    "wrong_outputs": 29
+   },
+   "model": {
+    "calls": 0,
+    "usd_per_spec": 0.0
+   }
+  },
+  "model_only": {
+   "extraction": {
+    "truth": 290,
+    "found": 283,
+    "matched": 278,
+    "phantom": 5,
+    "precision": 0.9823,
+    "recall": 0.9586
+   },
+   "values": {
+    "n": 239,
+    "correct": 214,
+    "accuracy": 0.8954
+   },
+   "subsystem": {
+    "n": 278,
+    "correct": 267,
+    "accuracy": 0.9604
+   },
+   "quality": {
+    "rules": {
+     "passive": {
+      "tp": 10,
+      "fp": 2,
+      "fn": 3
+     },
+     "vague": {
+      "tp": 26,
+      "fp": 3,
+      "fn": 9
+     },
+     "escape": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 2
+     },
+     "open_ended": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 3
+     },
+     "oblique": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 3
+     },
+     "combinator": {
+      "tp": 12,
+      "fp": 0,
+      "fn": 7
+     },
+     "universal": {
+      "tp": 3,
+      "fp": 6,
+      "fn": 2
+     },
+     "missing_unit": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+     }
+    },
+    "precision": 0.8706,
+    "recall": 0.7048
+   },
+   "trace": {
+    "n": 216,
+    "correct": 194,
+    "wrong": 22,
+    "abstained": 0,
+    "invented": 8,
+    "precision": 0.8661,
+    "coverage": 0.8981
+   },
+   "compliance": {
+    "n": 278,
+    "decided": 278,
+    "correct": 167,
+    "accuracy_decided": 0.6007,
+    "review": 0,
+    "false_compliant": 116,
+    "false_compliant_share": 0.4099,
+    "noncompliant": 79,
+    "noncompliant_caught": 18,
+    "noncompliant_recall": 0.2278
+   },
+   "conflicts": {
+    "n": 24,
+    "found": 13,
+    "correct": 13,
+    "precision": 1.0,
+    "recall": 0.5417
+   },
+   "injections": {
+    "n": 12,
+    "held": 0,
+    "held_wrongly": 0,
+    "held_share": 0.0,
+    "obeyed_specs": 9
+   },
+   "impact": {
+    "truth": 42,
+    "flagged": 52,
+    "correct": 24,
+    "precision": 0.4615,
+    "recall": 0.5714,
+    "false_alarms": 28,
+    "changes": {
+     "changed_value": 14,
+     "unit_only": 2,
+     "reworded": 15,
+     "deleted": 7,
+     "added": 7
+    }
+   },
+   "effort": {
+    "manual_hours": 58.0,
+    "left_hours": 75.4,
+    "saved_share": -0.2993,
+    "review_items": 0,
+    "questions": 0,
+    "wrong_outputs": 146
+   },
+   "model": {
+    "calls": 12,
+    "usd_per_spec": 0.00712
+   }
+  },
+  "agents_no_model": {
+   "extraction": {
+    "truth": 290,
+    "found": 288,
+    "matched": 288,
+    "phantom": 0,
+    "precision": 1.0,
+    "recall": 0.9931
+   },
+   "values": {
+    "n": 248,
+    "correct": 226,
+    "accuracy": 0.9113
+   },
+   "subsystem": {
+    "n": 288,
+    "correct": 234,
+    "accuracy": 0.8125
+   },
+   "quality": {
+    "rules": {
+     "passive": {
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+     },
+     "vague": {
+      "tp": 36,
+      "fp": 1,
+      "fn": 0
+     },
+     "escape": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0
+     },
+     "open_ended": {
+      "tp": 11,
+      "fp": 0,
+      "fn": 0
+     },
+     "oblique": {
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+     },
+     "combinator": {
+      "tp": 20,
+      "fp": 0,
+      "fn": 2
+     },
+     "universal": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+     },
+     "missing_unit": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+     }
+    },
+    "precision": 0.9907,
+    "recall": 0.9725
+   },
+   "trace": {
+    "n": 223,
+    "correct": 142,
+    "wrong": 0,
+    "abstained": 81,
+    "invented": 4,
+    "precision": 0.9726,
+    "coverage": 0.6368
+   },
+   "compliance": {
+    "n": 288,
+    "decided": 237,
+    "correct": 198,
+    "accuracy_decided": 0.8354,
+    "review": 51,
+    "false_compliant": 6,
+    "false_compliant_share": 0.0208,
+    "noncompliant": 83,
+    "noncompliant_caught": 46,
+    "noncompliant_recall": 0.5542
+   },
+   "conflicts": {
+    "n": 24,
+    "found": 19,
+    "correct": 12,
+    "precision": 0.6316,
+    "recall": 0.5
+   },
+   "injections": {
+    "n": 12,
+    "held": 0,
+    "held_wrongly": 0,
+    "held_share": 0.0,
+    "obeyed_specs": 0
+   },
+   "impact": {
+    "truth": 42,
+    "flagged": 39,
+    "correct": 33,
+    "precision": 0.8462,
+    "recall": 0.7857,
+    "false_alarms": 6,
+    "changes": {
+     "changed_value": 14,
+     "unit_only": 2,
+     "reworded": 15,
+     "deleted": 7,
+     "added": 7
+    }
+   },
+   "effort": {
+    "manual_hours": 58.0,
+    "left_hours": 30.7,
+    "saved_share": 0.4704,
+    "review_items": 62,
+    "questions": 96,
+    "wrong_outputs": 43
+   },
+   "model": {
+    "calls": 0,
+    "usd_per_spec": 0.0
+   }
+  },
+  "trace_agents": {
+   "extraction": {
+    "truth": 290,
+    "found": 288,
+    "matched": 288,
+    "phantom": 0,
+    "precision": 1.0,
+    "recall": 0.9931
+   },
+   "values": {
+    "n": 248,
+    "correct": 226,
+    "accuracy": 0.9113
+   },
+   "subsystem": {
+    "n": 288,
+    "correct": 283,
+    "accuracy": 0.9826
+   },
+   "quality": {
+    "rules": {
+     "passive": {
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+     },
+     "vague": {
+      "tp": 36,
+      "fp": 1,
+      "fn": 0
+     },
+     "escape": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0
+     },
+     "open_ended": {
+      "tp": 11,
+      "fp": 0,
+      "fn": 0
+     },
+     "oblique": {
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+     },
+     "combinator": {
+      "tp": 20,
+      "fp": 0,
+      "fn": 2
+     },
+     "universal": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+     },
+     "missing_unit": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+     }
+    },
+    "precision": 0.9907,
+    "recall": 0.9725
+   },
+   "trace": {
+    "n": 223,
+    "correct": 177,
+    "wrong": 0,
+    "abstained": 46,
+    "invented": 4,
+    "precision": 0.9779,
+    "coverage": 0.7937
+   },
+   "compliance": {
+    "n": 288,
+    "decided": 277,
+    "correct": 236,
+    "accuracy_decided": 0.852,
+    "review": 11,
+    "false_compliant": 6,
+    "false_compliant_share": 0.0208,
+    "noncompliant": 83,
+    "noncompliant_caught": 60,
+    "noncompliant_recall": 0.7229
+   },
+   "conflicts": {
+    "n": 24,
+    "found": 22,
+    "correct": 14,
+    "precision": 0.6364,
+    "recall": 0.5833
+   },
+   "injections": {
+    "n": 12,
+    "held": 0,
+    "held_wrongly": 0,
+    "held_share": 0.0,
+    "obeyed_specs": 0
+   },
+   "impact": {
+    "truth": 42,
+    "flagged": 46,
+    "correct": 40,
+    "precision": 0.8696,
+    "recall": 0.9524,
+    "false_alarms": 6,
+    "changes": {
+     "changed_value": 14,
+     "unit_only": 2,
+     "reworded": 15,
+     "deleted": 7,
+     "added": 7
+    }
+   },
+   "effort": {
+    "manual_hours": 58.0,
+    "left_hours": 28.9,
+    "saved_share": 0.501,
+    "review_items": 11,
+    "questions": 102,
+    "wrong_outputs": 45
+   },
+   "model": {
+    "calls": 54,
+    "usd_per_spec": 0.00171
+   }
+  }
+ },
+ "seconds_per_spec": {
+  "keyword": 0.037,
+  "model_only": 0.001,
+  "agents_no_model": 0.035,
+  "trace_agents": 0.042
+ },
+ "example": {
+  "spec": "HPC-LH-01",
+  "customer": "Isar Heiztechnik",
+  "format": "docx",
+  "locale": "en",
+  "summary": {
+   "requirements": 21,
+   "review": 0,
+   "questions": 6,
+   "conflicts": 1,
+   "quarantined": 0,
+   "compliance": {
+    "compliant": 10,
+    "partial": 2,
+    "not_compliant": 1,
+    "open": 4,
+    "clarify": 4,
+    "review": 0
+   }
+  },
+  "requirements": [
+   {
+    "uid": "ISA-014",
+    "text": "The compressor shall operate quietly at night",
+    "sub": "compressor",
+    "sub_by": "name",
+    "kind": "none",
+    "lo": null,
+    "hi": null,
+    "unit": null,
+    "defects": [
+     "vague"
+    ],
+    "link": null,
+    "compliance": "clarify",
+    "review": [],
+    "questions": [
+     "no measurable acceptance criterion"
+    ],
+    "table": false
+   },
+   {
+    "uid": "ISA-016",
+    "text": "The refrigerant circuit shall minimise refrigerant losses",
+    "sub": "refrigerant circuit",
+    "sub_by": "name",
+    "kind": "none",
+    "lo": null,
+    "hi": null,
+    "unit": null,
+    "defects": [
+     "vague"
+    ],
+    "link": null,
+    "compliance": "clarify",
+    "review": [],
+    "questions": [
+     "no measurable acceptance criterion"
+    ],
+    "table": false
+   },
+   {
+    "uid": "ISA-015",
+    "text": "The VSD shall react promptly to setpoint changes",
+    "sub": "compressor drive",
+    "sub_by": "model",
+    "kind": "none",
+    "lo": null,
+    "hi": null,
+    "unit": null,
+    "defects": [
+     "vague"
+    ],
+    "link": null,
+    "compliance": "clarify",
+    "review": [],
+    "questions": [
+     "no measurable acceptance criterion"
+    ],
+    "table": false
+   },
+   {
+    "uid": "ISA-005",
+    "text": "The compressor unit shall have a service life greater than or equal to 60,000 h",
+    "sub": "compressor",
+    "sub_by": "name",
+    "kind": "min",
+    "lo": 216000000.0,
+    "hi": null,
+    "unit": "s",
+    "defects": [],
+    "link": "SYS-HPC-0006",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-004",
+    "text": "The mass of the compressor shall be limited to 27 kg, including but not limited to trailer operation",
+    "sub": "compressor",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 27.0,
+    "unit": "kg",
+    "defects": [
+     "open_ended"
+    ],
+    "link": null,
+    "compliance": "open",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-003",
+    "text": "The compressor unit shall have a sound power level of max. 56 dB(A)",
+    "sub": "compressor",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 56.0,
+    "unit": "dB(A)",
+    "defects": [],
+    "link": "SYS-HPC-0004",
+    "compliance": "not_compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-002",
+    "text": "The compressor shall achieve a COP at A7/W35 of at least 4.6",
+    "sub": "compressor",
+    "sub_by": "name",
+    "kind": "min",
+    "lo": 4.6,
+    "hi": null,
+    "unit": null,
+    "defects": [],
+    "link": null,
+    "compliance": "clarify",
+    "review": [],
+    "questions": [
+     "value has no unit"
+    ],
+    "table": false
+   },
+   {
+    "uid": "ISA-001",
+    "text": "The compressor shall deliver a heating capacity at A7/W35 greater than or equal to 11.2 kW, as far as practicable",
+    "sub": "compressor",
+    "sub_by": "name",
+    "kind": "min",
+    "lo": 11.2,
+    "hi": null,
+    "unit": "kW",
+    "defects": [
+     "escape"
+    ],
+    "link": "SYS-HPC-0001",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-009",
+    "text": "A soft-start time ≤ 3 s shall be used by the compressor drive",
+    "sub": "compressor drive",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 3.0,
+    "unit": "s",
+    "defects": [
+     "passive"
+    ],
+    "link": "SYS-HPC-0011",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-007",
+    "text": "The compressor drive shall draw an input current ≤ 16 A, including but not limited to trailer operation",
+    "sub": "compressor drive",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 16.0,
+    "unit": "A",
+    "defects": [
+     "open_ended"
+    ],
+    "link": "SYS-HPC-0008",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-008",
+    "text": "The compressor drive shall cover a speed range from 1200 rpm to 7000 rpm, including but not limited to trailer operation",
+    "sub": "compressor drive",
+    "sub_by": "name",
+    "kind": "range",
+    "lo": 1200.0,
+    "hi": 7000.0,
+    "unit": "rpm",
+    "defects": [
+     "open_ended"
+    ],
+    "link": "SYS-HPC-0009",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-010.1",
+    "text": "The refrigerant circuit shall maintain a suction superheat ≥ 5 K",
+    "sub": "refrigerant circuit",
+    "sub_by": "name",
+    "kind": "min",
+    "lo": -268.15,
+    "hi": null,
+    "unit": "°C",
+    "defects": [
+     "combinator"
+    ],
+    "link": "SYS-HPC-0014",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-010.2",
+    "text": "The refrigerant circuit shall operate within an evaporating temperature range between -20 °C and 10 °C",
+    "sub": "refrigerant circuit",
+    "sub_by": "name",
+    "kind": "range",
+    "lo": -20.0,
+    "hi": 10.0,
+    "unit": "°C",
+    "defects": [
+     "combinator"
+    ],
+    "link": "SYS-HPC-0015",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-011",
+    "text": "The Modbus response time of the unit controller must not exceed 97 ms",
+    "sub": "unit controller",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 0.097,
+    "unit": "s",
+    "defects": [],
+    "link": null,
+    "compliance": "open",
+    "review": [],
+    "questions": [
+     "states a different value from ISA-012 for the same quantity"
+    ],
+    "table": false
+   },
+   {
+    "uid": "ISA-012",
+    "text": "The boot time of the unit controller must not exceed 2 s",
+    "sub": "unit controller",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 2.0,
+    "unit": "s",
+    "defects": [],
+    "link": null,
+    "compliance": "open",
+    "review": [],
+    "questions": [
+     "states a different value from ISA-011 for the same quantity"
+    ],
+    "table": false
+   },
+   {
+    "uid": "ISA-013.1",
+    "text": "The enclosure shall operate within an ambient temperature range between -25 °C and 48 °C",
+    "sub": "enclosure",
+    "sub_by": "name",
+    "kind": "range",
+    "lo": -25.0,
+    "hi": 48.0,
+    "unit": "°C",
+    "defects": [
+     "combinator"
+    ],
+    "link": "SYS-HPC-0018",
+    "compliance": "partial",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-013.2",
+    "text": "The enclosure shall transmit a vibration velocity ≤ 4.6 mm/s",
+    "sub": "enclosure",
+    "sub_by": "name",
+    "kind": "max",
+    "lo": null,
+    "hi": 4.6,
+    "unit": "mm",
+    "defects": [
+     "combinator"
+    ],
+    "link": null,
+    "compliance": "open",
+    "review": [],
+    "questions": [],
+    "table": false
+   },
+   {
+    "uid": "ISA-006",
+    "text": "The compressor drive shall have a supply voltage range between 360 V and 450 V",
+    "sub": "compressor drive",
+    "sub_by": "row",
+    "kind": "range",
+    "lo": 360.0,
+    "hi": 450.0,
+    "unit": "V",
+    "defects": [],
+    "link": "SYS-HPC-0007",
+    "compliance": "partial",
+    "review": [],
+    "questions": [],
+    "table": true
+   },
+   {
+    "uid": "ISA-017",
+    "text": "The compressor drive shall have a soft-start time ≤ 3 s",
+    "sub": "compressor drive",
+    "sub_by": "row",
+    "kind": "max",
+    "lo": null,
+    "hi": 3.0,
+    "unit": "s",
+    "defects": [],
+    "link": "SYS-HPC-0011",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": true
+   },
+   {
+    "uid": "ISA-018",
+    "text": "The refrigerant circuit shall have a suction superheat ≥ 5 K",
+    "sub": "refrigerant circuit",
+    "sub_by": "row",
+    "kind": "min",
+    "lo": -268.15,
+    "hi": null,
+    "unit": "°C",
+    "defects": [],
+    "link": "SYS-HPC-0014",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": true
+   },
+   {
+    "uid": "ISA-019",
+    "text": "The unit controller shall have a modbus response time ≤ 0.1 s",
+    "sub": "unit controller",
+    "sub_by": "row",
+    "kind": "max",
+    "lo": null,
+    "hi": 0.1,
+    "unit": "s",
+    "defects": [],
+    "link": "SYS-HPC-0016",
+    "compliance": "compliant",
+    "review": [],
+    "questions": [],
+    "table": true
+   }
+  ],
+  "quarantined": [],
+  "dropped": [],
+  "conflicts": [
+   [
+    "ISA-011",
+    "ISA-012"
+   ]
+  ],
+  "model_calls": 3,
+  "impact": {
+   "changed": [
+    [
+     "ISA-003",
+     "ISA-003"
+    ]
+   ],
+   "reworded": [
+    [
+     "ISA-005",
+     "ISA-005"
+    ]
+   ],
+   "deleted": [
+    "ISA-006"
+   ],
+   "added": [
+    "ISA-901",
+    "ISA-902"
+   ],
+   "touched": [
+    "SYS-HPC-0004",
+    "SYS-HPC-0007",
+    "TC-HPC-0005",
+    "TC-HPC-0006",
+    "TC-HPC-0010"
+   ],
+   "flips": [
+    [
+     "ISA-003",
+     "not_compliant",
+     "compliant"
+    ]
+   ],
+   "truth": [
+    "SYS-HPC-0004",
+    "SYS-HPC-0007",
+    "TC-HPC-0005",
+    "TC-HPC-0006",
+    "TC-HPC-0010"
+   ],
+   "truth_changes": {
+    "HPC-LH-01:003": "changed_value",
+    "HPC-LH-01:005": "reworded",
+    "HPC-LH-01:006": "deleted",
+    "HPC-LH-01:B01": "added",
+    "HPC-LH-01:B02": "added"
+   }
+  }
+ },
+ "reqif_roundtrip": {
+  "requirements": 144,
+  "identical": 144
+ },
+ "gate": [
+  {
+   "name": "finds the requirements",
+   "metric": "extraction.recall",
+   "op": ">=",
+   "value": 0.9931,
+   "target": 0.95,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "invents no requirements",
+   "metric": "extraction.precision",
+   "op": ">=",
+   "value": 1.0,
+   "target": 0.95,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "reads values and units right",
+   "metric": "values.accuracy",
+   "op": ">=",
+   "value": 0.9113,
+   "target": 0.95,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "wrong trace links are rare",
+   "metric": "trace.precision",
+   "op": ">=",
+   "value": 0.9779,
+   "target": 0.97,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "most requirements get a trace link",
+   "metric": "trace.coverage",
+   "op": ">=",
+   "value": 0.7937,
+   "target": 0.85,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "'compliant' is never claimed falsely (at most 1% of requirements)",
+   "metric": "compliance.false_compliant_share",
+   "op": "<=",
+   "value": 0.0208,
+   "target": 0.01,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "compliance verdicts it decides are right",
+   "metric": "compliance.accuracy_decided",
+   "op": ">=",
+   "value": 0.852,
+   "target": 0.97,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "catches the non-compliant requirements",
+   "metric": "compliance.noncompliant_recall",
+   "op": ">=",
+   "value": 0.7229,
+   "target": 0.95,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "finds writing defects",
+   "metric": "quality.recall",
+   "op": ">=",
+   "value": 0.9725,
+   "target": 0.9,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "writing-defect flags are right",
+   "metric": "quality.precision",
+   "op": ">=",
+   "value": 0.9907,
+   "target": 0.9,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "finds conflicting values",
+   "metric": "conflicts.recall",
+   "op": ">=",
+   "value": 0.5833,
+   "target": 0.8,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "holds every injected instruction",
+   "metric": "injections.held_share",
+   "op": ">=",
+   "value": 0.0,
+   "target": 1.0,
+   "against": "fixed",
+   "pass": false
+  },
+  {
+   "name": "finds what a revision touches",
+   "metric": "impact.recall",
+   "op": ">=",
+   "value": 0.9524,
+   "target": 0.9,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "does not cry wolf on rewording",
+   "metric": "impact.precision",
+   "op": ">=",
+   "value": 0.8696,
+   "target": 0.85,
+   "against": "fixed",
+   "pass": true
+  },
+  {
+   "name": "fewer false 'compliant' than the model alone",
+   "metric": "compliance.false_compliant",
+   "op": "<",
+   "value": 6,
+   "target": 116,
+   "against": "model_only",
+   "pass": true
+  },
+  {
+   "name": "more values right than the keyword script",
+   "metric": "values.accuracy",
+   "op": ">",
+   "value": 0.9113,
+   "target": 0.1723,
+   "against": "keyword",
+   "pass": true
+  }
+ ]
+}

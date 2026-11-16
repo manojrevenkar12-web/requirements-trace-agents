@@ -333,7 +333,8 @@ def make_spec(cfg, name, sid, customer, qs, subs, by_q, rev="A") -> Spec:
         v0 = x.style["v"]
         if j < st["conflicts"]:
             if q.decimals:
-                v = round(v0 + (1.5 if q.kind == "min" else -1.5), q.decimals)
+                delta = max(10 ** -q.decimals, round(abs(v0) * 0.02, q.decimals))
+                v = round(v0 + (delta if q.kind == "min" else -delta), q.decimals)
             else:
                 v = round(v0 * (1.08 if q.kind == "min" else 0.92) / q.step) * q.step
             unit, role = q.unit, "conflict"
@@ -429,9 +430,8 @@ def write(cfg, name, sid, group: list[Req], qs, subs, comma, sentence, rev) -> l
         return out
     if len(parts) == 2:
         second = parts[1]
-        for lead in (f"The {subj} shall ",):
-            if second.startswith(lead):
-                second = "shall " + second[len(lead):]
+        lead = f"The {subj} shall "
+        second = "shall " + second[len(lead):] if second.startswith(lead) else second[0].lower() + second[1:]
         sentence_text = f"{parts[0]} and {second}."
     else:
         sentence_text = parts[0] + "."

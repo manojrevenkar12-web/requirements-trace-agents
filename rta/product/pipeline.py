@@ -79,7 +79,7 @@ def analyse(data: bytes, base: Baseline, model: Model, cfg: dict, name: str) -> 
     quarantined, dropped = [], []
     header = None
     n = 0
-    dimless = set(cfg["dimensionless"])
+    dimless = frozenset(cfg["dimensionless"])
     for b in blocks:
         if b.kind == "heading":
             header = None
@@ -102,7 +102,7 @@ def analyse(data: bytes, base: Baseline, model: Model, cfg: dict, name: str) -> 
         for k, clause in enumerate(parts):
             n += 1
             uid = (f"{rid}.{k + 1}" if compound else rid) if rid else f"{name}-{n:03d}"
-            p = parse(clause, loc)
+            p = parse(clause, loc, dimless)
             sub = subject(clause, base.subsystems)
             by = "row" if (table and sub) else ("name" if sub else "none")
             review = []

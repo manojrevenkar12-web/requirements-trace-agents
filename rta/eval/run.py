@@ -65,7 +65,7 @@ def evaluate(world_file: str = "config/world.yaml", quick: bool = False) -> dict
         results = {sid: fn(sid, f, base, cfg, (world, stand_in)) for sid, f in files.items()}
         timing[name] = round((time.perf_counter() - t0) / (2 * len(files)), 3)
         out["designs"][name] = score(results, world, cfg)
-    out["seconds_per_spec"] = timing
+    print("seconds per spec file:", timing)     # machine-dependent, so printed and not stored in the report
     out["example"] = example(world, files, base, cfg, stand_in)
     out["reqif_roundtrip"] = roundtrip(world, files, base, cfg, stand_in)
     return clean(out)
