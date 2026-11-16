@@ -1,0 +1,24 @@
+# The product's settings. The world never reads this file.
+reqif:                          # attribute and type names in the supplier's ReqIF export
+  text: TEXT
+  subsystem: SUBSYSTEM
+  type: TYPE
+  requirement: requirement
+  verifies: verifies
+trace:
+  min_label: 0.3                # share of label words in common; below it a baseline item is not a candidate
+  min_score: 0.35               # no candidate scores this much: the requirement is new to the supplier ("open")
+  margin: 0.15                  # two candidates closer than this go to an engineer
+  cond_bonus: 0.5               # the condition (at -30 °C, when > 65 °C) matches
+  cond_penalty: 0.6
+  kind_bonus: 0.1               # both say "at least", or both "at most"
+dimensionless: [ratio, cop, coefficient, factor, performance]
+effort:                         # minutes, for the time comparison in the report (assumptions, not measurements)
+  manual_per_requirement: 12    # an engineer reading, tracing and judging one requirement by hand
+  review_item: 4                # checking one item the pipeline routed to a person
+  question: 2                   # writing one clarification question to the customer
+  check_decided: 0.5            # spot-reading a requirement the pipeline decided
+  rework: 30                    # finding and fixing a wrong verdict, link or invented requirement later
+model:
+  usd_per_million_tokens: 3.0   # blended input and output price of the hosted model
+  chars_per_token: 4

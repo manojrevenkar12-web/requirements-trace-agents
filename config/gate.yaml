@@ -1,0 +1,19 @@
+# The release gate for trace_agents, written before the first held-out result. Not moved afterwards.
+design: trace_agents
+lines:
+  - {name: finds the requirements, metric: extraction.recall, op: '>=', value: 0.95}
+  - {name: invents no requirements, metric: extraction.precision, op: '>=', value: 0.95}
+  - {name: reads values and units right, metric: values.accuracy, op: '>=', value: 0.95}
+  - {name: wrong trace links are rare, metric: trace.precision, op: '>=', value: 0.97}
+  - {name: most requirements get a trace link, metric: trace.coverage, op: '>=', value: 0.85}
+  - {name: "'compliant' is never claimed falsely (at most 1% of requirements)", metric: compliance.false_compliant_share, op: '<=', value: 0.01}
+  - {name: compliance verdicts it decides are right, metric: compliance.accuracy_decided, op: '>=', value: 0.97}
+  - {name: catches the non-compliant requirements, metric: compliance.noncompliant_recall, op: '>=', value: 0.95}
+  - {name: finds writing defects, metric: quality.recall, op: '>=', value: 0.90}
+  - {name: writing-defect flags are right, metric: quality.precision, op: '>=', value: 0.90}
+  - {name: finds conflicting values, metric: conflicts.recall, op: '>=', value: 0.80}
+  - {name: holds every injected instruction, metric: injections.held_share, op: '>=', value: 1.0}
+  - {name: finds what a revision touches, metric: impact.recall, op: '>=', value: 0.90}
+  - {name: does not cry wolf on rewording, metric: impact.precision, op: '>=', value: 0.85}
+  - {name: fewer false 'compliant' than the model alone, metric: compliance.false_compliant, op: '<', ref: model_only}
+  - {name: more values right than the keyword script, metric: values.accuracy, op: '>', ref: keyword}

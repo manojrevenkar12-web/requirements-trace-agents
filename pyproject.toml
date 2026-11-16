@@ -1,0 +1,18 @@
+[project]
+name = "requirements-trace-agents"
+version = "1.0.0"
+description = "Agents for requirements and systems engineering in manufacturing: customer specs in, requirements with INCOSE checks, unit-safe values, ReqIF trace links, computed compliance, conflicts and change impact out."
+requires-python = ">=3.12"
+authors = [{ name = "Manoj Kumar Prakash" }]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 140
+
+[tool.ruff.lint.per-file-ignores]
+"rta/eval/readme.py" = ["E501"]   # the README template has long table rows
+"rta/world/docs.py" = ["E501"]    # ReqIF XML templates
