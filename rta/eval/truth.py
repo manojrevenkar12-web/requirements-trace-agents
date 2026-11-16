@@ -4,7 +4,7 @@ from __future__ import annotations
 import math
 import re
 
-from rta.product.units import canonical
+from rta.product.units import UNITS, canonical
 from rta.world.spec import Req
 
 STOP = set("a an the of to and or in on at for by with within shall must be is are have has".split())
@@ -18,11 +18,23 @@ def truth_text(r: Req) -> str:
     return r.text or " ".join(r.style.get("row", []))
 
 
+def conv(v: float, unit: str | None) -> tuple:
+    """Truth values in the product's canonical units; a unit the product does not know stays as written."""
+    if math.isinf(v):
+        return v, None
+    if not unit:
+        return v, None
+    if unit not in UNITS:
+        return v, unit
+    x, u, _ = canonical(v, unit)
+    return x, u
+
+
 def truth_interval(r: Req) -> tuple:
     if r.kind == "none":
         return ("none", None, None, None)
-    lo, u, _ = canonical(r.lo, r.unit) if not math.isinf(r.lo) else (r.lo, None, None)
-    hi, u2, _ = canonical(r.hi, r.unit) if not math.isinf(r.hi) else (r.hi, None, None)
+    lo, u = conv(r.lo, r.unit)
+    hi, u2 = conv(r.hi, r.unit)
     return (r.kind, lo, hi, u or u2)
 
 

@@ -18,7 +18,7 @@ from rta.product.impact import diff
 from rta.product.model import Counted, NoModel
 from rta.product.pipeline import Requirement, analyse
 from rta.product.trace import Baseline
-from rta.product.units import canonical
+from rta.product.units import UNITS, canonical
 
 INF = math.inf
 
@@ -115,7 +115,7 @@ def model_only(sid: str, files: dict, base: Baseline, cfg: dict, world=None) -> 
             uid = d["key"] or f"{sid}-note-{k}"
             lo, hi, unit = d["lo"], d["hi"], d["unit"]
             cu = None
-            if unit:
+            if unit in UNITS:
                 lo = canonical(lo, unit)[0] if lo is not None and not math.isinf(lo) else lo
                 hi2 = canonical(hi, unit) if hi is not None and not math.isinf(hi) else (hi, None, None)
                 hi = hi2[0]
